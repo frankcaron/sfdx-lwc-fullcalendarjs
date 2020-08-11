@@ -3,7 +3,7 @@
         "experimentalDecorators": true,
         "baseUrl": ".",
         "paths": {
-            "c/full-calendar-js": [
+            "c/fullCalendarJs": [
                 "fullCalendarJs/fullCalendarJs.js"
             ]
         }
@@ -11,5 +11,10 @@
     "include": [
         "**/*",
         "../../../../.sfdx/typings/lwc/**/*.d.ts"
-    ]
+    ],
+    "typeAcquisition": {
+        "include": [
+            "jest"
+        ]
+    }
 }
