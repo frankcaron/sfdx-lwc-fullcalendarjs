@@ -5,6 +5,15 @@
         "paths": {
             "c/fullCalendarJs": [
                 "fullCalendarJs/fullCalendarJs.js"
+            ],
+            "c/quickActionTray": [
+                "quickActionTray/quickActionTray.js"
+            ],
+            "c/approvalTray": [
+                "approvalTray/approvalTray.js"
+            ],
+            "c/taskTray": [
+                "taskTray/taskTray.js"
             ]
         }
     },
