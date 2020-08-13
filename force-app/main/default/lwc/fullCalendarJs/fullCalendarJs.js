@@ -71,19 +71,19 @@ export default class FullCalendarJs extends LightningElement {
             id: 999,
             title: 'Finalize approvals',
             start: '2020-09-01T16:00:00',
-            backgroundColor: '#378006'
+            backgroundColor: '#41bef0'
         },
         {
           id: 998,
           title: 'Finalize approvals',
           start: '2020-09-12T08:00:00',
-          backgroundColor: '#378006'
+          backgroundColor: '#41bef0'
       },
       {
         id: 997,
         title: 'Finalize approvals',
         start: '2020-09-17T17:00:00',
-        backgroundColor: '#378006'
+        backgroundColor: '#41bef0'
     },
         {
           title: 'Black Card Upsell Campaign',
