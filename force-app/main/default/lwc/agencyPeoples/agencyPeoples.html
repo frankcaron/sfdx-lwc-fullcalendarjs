@@ -1,0 +1,73 @@
+<template>
+    <lightning-card title="Creative Team" variant="base">
+        <div slot="actions">
+            <lightning-button variant="neutral" label="Add Member"></lightning-button>
+        </div>
+        <div slot="footer"><a target="_blank" class="slds-text-link" href="">View More</a></div>
+        <div class="slds-card__body_inner">
+            <lightning-input class="slds-m-bottom_small" label="Input label" placeholder="Search People..." type="text" variant="label-hidden"></lightning-input>
+            <ul class="slds-list_vertical-space-medium">
+                <li class="slds-item">
+                    <lightning-layout horizontal-align="spread">
+                        <lightning-layout-item>
+                            <div class="slds-media">
+                                <div class="slds-media__figure">
+                                    <lightning-avatar variant="circle" src="https://www.lightningdesignsystem.com/assets/images/avatar1.jpg" initials="AW" fallback-icon-name="standard:person_account" alternative-text="Amy Weaver" class="slds-m-right_small"></lightning-avatar>
+                                </div>
+                                <div class="slds-media__body"><a target="_blank" class="slds-text-link" href="">Tim Barr</a>
+                                    <div style="color: rgb(81, 79, 77); font-size: 13px;">
+                                        <p>ABC Agency</p>
+                                    </div>
+                                </div>
+                                <div class="slds-media__figure slds-media__figure_reverse"></div>
+                            </div>
+                        </lightning-layout-item>
+                        <lightning-layout-item>
+                            <div class="slds-text-title slds-text-color_default">Owner</div>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </li>
+                <li class="slds-item">
+                    <lightning-layout horizontal-align="spread">
+                        <lightning-layout-item>
+                            <div class="slds-media">
+                                <div class="slds-media__figure">
+                                    <lightning-avatar variant="circle" src="https://www.lightningdesignsystem.com/assets/images/avatar2.jpg" initials="AW" fallback-icon-name="standard:person_account" alternative-text="Amy Weaver" class="slds-m-right_small"></lightning-avatar>
+                                </div>
+                                <div class="slds-media__body"><a target="_blank" class="slds-text-link" href="">Jane Grey</a>
+                                    <div style="color: rgb(81, 79, 77); font-size: 13px;">
+                                        <p>AMEX</p>
+                                    </div>
+                                </div>
+                                <div class="slds-media__figure slds-media__figure_reverse"></div>
+                            </div>
+                        </lightning-layout-item>
+                        <lightning-layout-item>
+                            <div class="slds-text-title slds-text-color_default">Owner</div>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </li>
+                <li class="slds-item">
+                    <lightning-layout horizontal-align="spread">
+                        <lightning-layout-item>
+                            <div class="slds-media">
+                                <div class="slds-media__figure">
+                                    <lightning-avatar variant="circle" src="https://www.lightningdesignsystem.com/assets/images/avatar3.jpg" initials="AW" fallback-icon-name="standard:person_account" alternative-text="Amy Weaver" class="slds-m-right_small"></lightning-avatar>
+                                </div>
+                                <div class="slds-media__body"><a target="_blank" class="slds-text-link" href="">John Mcgee</a>
+                                    <div style="color: rgb(81, 79, 77); font-size: 13px;">
+                                        <p>AMEX</p>
+                                    </div>
+                                </div>
+                                <div class="slds-media__figure slds-media__figure_reverse"></div>
+                            </div>
+                        </lightning-layout-item>
+                        <lightning-layout-item>
+                            <div class="slds-text-title slds-text-color_default">Owner</div>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </li>
+            </ul>
+        </div>
+    </lightning-card>
+</template>
