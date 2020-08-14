@@ -22,6 +22,7 @@ export default class FullCalendarJs extends LightningElement {
       return;
     }
     this.fullCalendarJsInitialised = true;
+    console.log("All good so far in the Community");
 
     // Executes all loadScript and loadStyle promises
     // and only resolves them once all promises are done
