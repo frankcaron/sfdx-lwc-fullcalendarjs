@@ -1,0 +1,18 @@
+<template>
+    <lightning-card title="Preview Creative" icon-name="custom:custom83">
+        <lightning-button label="Open Preview" slot="actions"></lightning-button>
+        <div class="padded">
+            <lightning-combobox
+            name="progress"
+            label="Customer Data Preview"
+            value={value}
+            placeholder="Select Data Extension Entry"
+            options={options}
+            onchange={handleChange} ></lightning-combobox>
+        </div>
+        <div class="padded bordered">
+            <img src="https://jsimms-20200724-demo.my.salesforce.com/resource/1597693737000/PreviewURL?" />
+        </div>
+        <p>&nbsp;</p>
+    </lightning-card>
+</template>

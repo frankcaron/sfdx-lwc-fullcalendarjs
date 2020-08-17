@@ -1,0 +1,1 @@
+{"errors":[{"filename":"/Users/fcaron/Documents/GitHub/sfdx-lwc-fullcalendarjs/force-app/main/default/lwc/emailPreview/emailPreview.css","location":{"line":2,"column":11},"code":"","message":"CssSyntaxError: LWC1009: 2:11: Unclosed string"}]}

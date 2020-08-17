@@ -1,0 +1,7 @@
+.padded {
+    margin: 15px;
+}
+
+.bordered {
+    border: 1px solid #666;
+}

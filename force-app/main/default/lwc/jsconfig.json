@@ -20,6 +20,9 @@
             ],
             "c/agencyPeoples": [
                 "agencyPeoples/agencyPeoples.js"
+            ],
+            "c/emailPreview": [
+                "emailPreview/emailPreview.js"
             ]
         }
     },
