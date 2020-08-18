@@ -14,10 +14,23 @@ global class parseEmail implements Messaging.InboundEmailHandler {
         System.debug('|| Email HTML Subject: ' + contentSubject);
         System.debug('|| Email HTML Sender: ' + contentSender);
         
-        // Decide on email type
+        // For decisioning later
         String emailType = 'None'; // Approval, Preview
-
-        // Parse the subject line
+        
+        // Find the Creative Name
+        
+        Matcher creativeIdRegex = Pattern.compile('CR-(\\d*) .* (\\w*)').matcher(contentSubject);
+        Boolean foundCreativeId = creativeIdRegex.find();
+        String creativeId = '';
+        String creativeStatus = '';
+        
+        system.debug('|| Creative ID Regex result: ' + foundCreativeId);
+        
+        if (foundCreativeId == true) {
+            creativeId = 'CR-' + creativeIdRegex.group(1);
+            creativeStatus = creativeIdRegex.group(2);
+        	system.debug('|| Creative ID Regex ID: ' + creativeId);
+        }
         
         // Find the Web Page View Link
         
@@ -37,7 +50,7 @@ global class parseEmail implements Messaging.InboundEmailHandler {
         
         // Find the Approval Link
         
-        Matcher reviewRegex = Pattern.compile('<a href="(.*[?][m][=](.*)[&].*[;][a][=].*[u][=](.*))" style.*>.*\\s*Review.*\\s*<\\/a>').matcher(contentBody);
+        Matcher reviewRegex = Pattern.compile('<a href="(.*?m=(.*)&.*;a=.*u=(.*))" style.*Review').matcher(contentBody);
         Boolean reviewFound = reviewRegex.find();
         String reviewURL = '';
         String reviewModel = '';
@@ -49,57 +62,34 @@ global class parseEmail implements Messaging.InboundEmailHandler {
             reviewURL = reviewRegex.group(1);
             reviewModel = reviewRegex.group(2);
             reviewsubURL = reviewRegex.group(3);
-            emailType = 'Approval';
         	system.debug('|| Approval Regex result: ' + reviewURL);
             system.debug('|| Approval Regex model: ' + reviewModel);
             system.debug('|| Approval Regex subURL: ' + reviewsubURL);
+        }
+        
+        // Set type
+        if (reviewFound == true && foundCreativeId == true) {
+            emailType = 'Approval';
         }
         
         //Do the org magic
         
         if(emailType == 'Approval') {
             
-            System.debug('|| Email is a preview email. Parsing accordingly.');
+            System.debug('|| Email is an Approval email. Parsing accordingly.');
             
             //Find matching creative for the hard-coded Campaign record
-            Creative__c creative = [SELECT Id, Name, Campaign__c, Marketing_Cloud_Ref_ID__c, Approval_Status__c from Creative__c WHERE Campaign__c = '7013t000001dHWKAA2' AND Marketing_Cloud_Ref_ID__c = 'NTIzMDA0MDA2OjE5OjA']; 
+            //Creative__c creative = [SELECT Id, Name, Campaign__c, Marketing_Cloud_Ref_ID__c, Approval_Status__c from Creative__c WHERE Campaign__c = '7013t000001dHWKAA2' AND Marketing_Cloud_Ref_ID__c = 'NTIzMDA0MDA2OjE5OjA']; 
+            Creative__c creative = [SELECT Id, Name, Campaign__c, Marketing_Cloud_Ref_ID__c, Approval_Status__c from Creative__c WHERE Name = :creativeId];
+  			//creativeStatus
             
             //Update status
             creative.Approval_Status__c = 'Legal Approval';
-            creative.Marketing_Cloud_Approval_URL__c = reviewURL;
+            creative.Marketing_Cloud_Approval_URL__c = reviewsubURL;
             update creative;
             
             System.debug('|| Moved the record ' + creative.Name + ' to approved status automatically.');
         }
-        
-        
-        Creative__c creative = new Creative__c();
-        
-        //Opportunity myOpportunity = new Opportunity();
-        //
-        //
-        //
-        //myOpportunity.Name = email.subject; // Name
-        //myOpportunity.RecordTypeId = myRecordTypeID; // For specific record type
-        //myOpportunity.StageName = 'Qualification'; // Qualification stage
-        //myOpportunity.CloseDate = System.today().addDays(60); // 60 days out
-        //myOpportunity.Description = email.plainTextBody; // Email body - could be in HTML but using default Opp plain text field
-          
-        /* Add attachment if it exists
-        if (email.binaryAttachments != null && email.binaryAttachments.size() > 0) {
-            for (integer i = 0 ; i < email.binaryAttachments.size() ; i++) {
-                
-                System.debug('|| Email attachment name: ' + email.binaryAttachments[i].filename);
-                System.debug('|| Email attachment content: ' + email.binaryAttachments[i].body);
-                
-                //Attachment attachment = new Attachment();
-                //attachment.ParentId = myOpportunity.Id;
-                //attachment.Name = email.binaryAttachments[i].filename;
-                //attachment.Body = email.binaryAttachments[i].body;                    
-                //insert attachment;
-            }
-        }
-		*/
                  
         //Return
         result.success = true;
