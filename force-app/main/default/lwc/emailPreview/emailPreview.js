@@ -1,26 +1,38 @@
-import { LightningElement } from 'lwc';
+import { LightningElement, api, wire } from 'lwc';
 import { NavigationMixin } from 'lightning/navigation';
+import { getRecord, getFieldValue } from 'lightning/uiRecordApi';
+
+import RECORD_URL from '@salesforce/schema/Creative__c.Preview_Site__c';
+import RECORD_IMG from '@salesforce/schema/Creative__c.Preview_Thumbnail__c';
+const FIELDS = [RECORD_URL, RECORD_IMG];
 
 export default class EmailPreview extends NavigationMixin(LightningElement) {
-    value = 'Frank';
 
-    get options() {
-        return [
-            { label: 'ID 14123: Frank Caron', value: 'Frank' },
-            { label: 'ID 12321: Jon Simms', value: 'Jon' },
-            { label: 'ID 51323: Tony Dotson', value: 'Tony' },
-        ];
+    //Record ID
+    @api recordId;
+
+    //URL
+    url = 'https://www.google.com';
+
+    //Wire Fetch
+    @wire(getRecord, { recordId: '$recordId', FIELDS })
+    creative;
+
+    get record_url() {
+        this.url = getFieldValue(this.creative.data, RECORD_URL);
+        return this.url;
     }
 
-    handleChange(event) {
-        this.value = event.detail.value;
+    get record_img() {
+        return getFieldValue(this.creative.data, RECORD_IMG);
     }
 
+    //Button control
     openPreview() {
         this[NavigationMixin.Navigate]({
             "type": "standard__webPage",
             "attributes": {
-                "url": "https://www.google.com/"
+                "url": this.url
             }
         });
     }
