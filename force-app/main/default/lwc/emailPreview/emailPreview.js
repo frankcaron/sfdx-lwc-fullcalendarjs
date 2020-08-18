@@ -12,16 +12,12 @@ export default class EmailPreview extends NavigationMixin(LightningElement) {
     //Record ID
     @api recordId;
 
-    //URL
-    url = '';
-
     //Wire Fetch
     @wire(getRecord, { recordId: '$recordId', fields: FIELDS })
     creative;
 
     get recordUrl() {
-        this.url = this.creative.data.fields.Preview_Site__c.value;
-        return this.url;
+        return this.creative.data.fields.Preview_Site__c.value;
     }
 
     get recordImg() {
@@ -33,7 +29,7 @@ export default class EmailPreview extends NavigationMixin(LightningElement) {
         this[NavigationMixin.Navigate]({
             "type": "standard__webPage",
             "attributes": {
-                "url": this.url
+                "url": this.creative.data.fields.Preview_Site__c.value
             }
         });
     }
