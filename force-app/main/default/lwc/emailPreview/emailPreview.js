@@ -1,10 +1,11 @@
 import { LightningElement, api, wire } from 'lwc';
 import { NavigationMixin } from 'lightning/navigation';
-import { getRecord, getFieldValue } from 'lightning/uiRecordApi';
+import { getRecord } from 'lightning/uiRecordApi';
 
-import RECORD_URL from '@salesforce/schema/Creative__c.Preview_Site__c';
-import RECORD_IMG from '@salesforce/schema/Creative__c.Preview_Thumbnail__c';
-const FIELDS = [RECORD_URL, RECORD_IMG];
+const FIELDS = [
+    'Creative__c.Preview_Site__c',
+    'Creative__c.Preview_Thumbnail__c',
+];
 
 export default class EmailPreview extends NavigationMixin(LightningElement) {
 
@@ -12,19 +13,19 @@ export default class EmailPreview extends NavigationMixin(LightningElement) {
     @api recordId;
 
     //URL
-    url = 'https://www.google.com';
+    url = '';
 
     //Wire Fetch
-    @wire(getRecord, { recordId: '$recordId', FIELDS })
+    @wire(getRecord, { recordId: '$recordId', fields: FIELDS })
     creative;
 
-    get record_url() {
-        this.url = getFieldValue(this.creative.data, RECORD_URL);
+    get recordUrl() {
+        this.url = this.creative.data.fields.Preview_Site__c.value;
         return this.url;
     }
 
-    get record_img() {
-        return getFieldValue(this.creative.data, RECORD_IMG);
+    get recordImg() {
+        return this.creative.data.fields.Preview_Thumbnail__c.value;
     }
 
     //Button control

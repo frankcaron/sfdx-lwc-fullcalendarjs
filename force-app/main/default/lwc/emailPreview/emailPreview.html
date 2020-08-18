@@ -1,12 +1,13 @@
 <template>
-    <template if:true={creative.data}></template>
+    <template if:true={creative.data}>
         <lightning-card title="Preview Creative" icon-name="custom:custom83">
             <lightning-button label="Open Full Preview" onclick={openPreview} slot="actions"></lightning-button>
             <div class="padded bordered centered">
-                <img class="half" src={record_img} />
-                {record_img}
-                {record_url}
+                <img class="half" src={recordImg} />
             </div>
         </lightning-card>
+    </template>
+    <template if:true={creative.error}>
+        <div class ="padded bordered centered">{creative.error}></div>
     </template>
 </template>
