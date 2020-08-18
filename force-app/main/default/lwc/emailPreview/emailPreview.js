@@ -33,4 +33,13 @@ export default class EmailPreview extends NavigationMixin(LightningElement) {
             }
         });
     }
+
+    openMC() {
+        this[NavigationMixin.Navigate]({
+            "type": "standard__webPage",
+            "attributes": {
+                "url": "https://mc.s4.exacttarget.com/cloud/#app/Content%20Builder/"
+            }
+        });
+    }
 }
