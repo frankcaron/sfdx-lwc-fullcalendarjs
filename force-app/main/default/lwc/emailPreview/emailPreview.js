@@ -1,6 +1,7 @@
 import { LightningElement } from 'lwc';
+import { NavigationMixin } from 'lightning/navigation';
 
-export default class EmailPreview extends LightningElement {
+export default class EmailPreview extends NavigationMixin(LightningElement) {
     value = 'Frank';
 
     get options() {
@@ -13,5 +14,14 @@ export default class EmailPreview extends LightningElement {
 
     handleChange(event) {
         this.value = event.detail.value;
+    }
+
+    openPreview() {
+        this[NavigationMixin.Navigate]({
+            "type": "standard__webPage",
+            "attributes": {
+                "url": "https://www.google.com/"
+            }
+        });
     }
 }

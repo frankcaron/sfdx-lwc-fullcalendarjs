@@ -5,3 +5,7 @@
 .bordered {
     border: 1px solid #666;
 }
+
+.centered {
+    text-align: center;
+}
