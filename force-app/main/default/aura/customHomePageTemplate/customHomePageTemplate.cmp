@@ -1,0 +1,22 @@
+<aura:component implements="lightning:appHomeTemplate" description="Main column and right sidebar with a footer.">
+    <aura:attribute name="left" type="Aura.Component[]" />
+    <aura:attribute name="right" type="Aura.Component[]" />
+	<aura:attribute name="bottom" type="Aura.Component[]" />
+    
+    <div>
+        <lightning:layout multipleRows="true">
+            <lightning:layout class="slds-m-bottom_small">
+                <lightning:layoutItem flexibility="grow" class="slds-m-right_xsmall">
+                    {!v.left}
+                </lightning:layoutItem>
+                <lightning:layoutItem size="4" class="slds-m-left_small">
+                    {!v.right}
+                </lightning:layoutItem>
+            </lightning:layout>
+        <lightning:layoutItem size="12">
+                {!v.bottom}
+        </lightning:layoutItem>
+        </lightning:layout>
+    </div>
+    
+</aura:component>
