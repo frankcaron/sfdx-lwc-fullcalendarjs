@@ -50,7 +50,7 @@ global class parseEmail implements Messaging.InboundEmailHandler {
         
         // Find the Approval Link
         
-        Matcher reviewRegex = Pattern.compile('<a href="(.*?m=(\\w*)&a=Approvals.*&u=(.*)") style=.*">').matcher(contentBody);
+        Matcher reviewRegex = Pattern.compile('<a href="(.*?m=(\\w*)&a=Approvals.*&u=(.*)").*>').matcher(contentBody);
         Boolean reviewFound = reviewRegex.find();
         String reviewURL = '';
         String reviewModel = '';
