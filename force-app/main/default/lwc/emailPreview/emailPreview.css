@@ -9,3 +9,9 @@
 .centered {
     text-align: center;
 }
+
+.half {
+    border: 0px;
+    max-width: 50;
+    text-align: center;
+}

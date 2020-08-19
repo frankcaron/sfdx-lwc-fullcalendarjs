@@ -97,7 +97,7 @@ global class parseEmail implements Messaging.InboundEmailHandler {
             }
             
             //Update approval URL
-            creative.Marketing_Cloud_Approval_URL__c = reviewsubURL;
+            creative.Marketing_Cloud_Approval_URL__c = EncodingUtil.URLDECODE(reviewsubURL,'UTF-8');
             creative.Marketing_Cloud_Ref_ID__c = reviewModel;
             
             //Update record

@@ -5,6 +5,7 @@ import { getRecord } from 'lightning/uiRecordApi';
 const FIELDS = [
     'Creative__c.Preview_Site__c',
     'Creative__c.Preview_Thumbnail__c',
+    'Creative__c.Marketing_Cloud_Approval_URL__c'
 ];
 
 export default class EmailPreview extends NavigationMixin(LightningElement) {
@@ -38,7 +39,7 @@ export default class EmailPreview extends NavigationMixin(LightningElement) {
         this[NavigationMixin.Navigate]({
             "type": "standard__webPage",
             "attributes": {
-                "url": "https://mc.s4.exacttarget.com/cloud/#app/Content%20Builder/"
+                "url": this.creative.data.fields.Marketing_Cloud_Approval_URL__c.value ? this.creative.data.fields.Marketing_Cloud_Approval_URL__c.value : "https://mc.s4.exacttarget.com/cloud/#app/Content%20Builder/"
             }
         });
     }
