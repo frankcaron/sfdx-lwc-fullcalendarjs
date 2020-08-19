@@ -84,8 +84,23 @@ global class parseEmail implements Messaging.InboundEmailHandler {
   			//creativeStatus
             
             //Update status
-            creative.Approval_Status__c = 'Legal Approval';
+            switch on creativeStatus {
+                when 'Submitted' {
+                	creative.Approval_Status__c = '	In Revision';
+                }
+                when 'Approved' {
+                	creative.Approval_Status__c = 'Legal Approval';
+                }
+                when 'Reviewed' {
+                	creative.Approval_Status__c = 'Creative Approval';
+            	}	
+            }
+            
+            //Update approval URL
             creative.Marketing_Cloud_Approval_URL__c = reviewsubURL;
+            creative.Marketing_Cloud_Ref_ID__c = reviewModel;
+            
+            //Update record
             update creative;
             
             System.debug('|| Moved the record ' + creative.Name + ' to approved status automatically.');
