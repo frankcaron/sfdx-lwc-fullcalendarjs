@@ -50,7 +50,7 @@ global class parseEmail implements Messaging.InboundEmailHandler {
         
         // Find the Approval Link
         
-        Matcher reviewRegex = Pattern.compile('<a href="(.*?m=(.*)&.*;a=.*u=(.*))" style.*Review').matcher(contentBody);
+        Matcher reviewRegex = Pattern.compile('<a href="(.*?m=(\\w*)&a=Approval.*&u=(.*)") style=.*">').matcher(contentBody);
         Boolean reviewFound = reviewRegex.find();
         String reviewURL = '';
         String reviewModel = '';
@@ -86,7 +86,7 @@ global class parseEmail implements Messaging.InboundEmailHandler {
             //Update status
             switch on creativeStatus {
                 when 'Submitted' {
-                	creative.Approval_Status__c = '	In Revision';
+                	creative.Approval_Status__c = 'In Revision';
                 }
                 when 'Approved' {
                 	creative.Approval_Status__c = 'Legal Approval';
