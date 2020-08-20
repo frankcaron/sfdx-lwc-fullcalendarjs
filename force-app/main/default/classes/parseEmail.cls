@@ -50,7 +50,7 @@ global class parseEmail implements Messaging.InboundEmailHandler {
         
         // Find the Approval Link
         
-        Matcher reviewRegex = Pattern.compile('<a href="(.*?m=(\\w*)&a=Approvals.*&u=(.*)").*>').matcher(contentBody);
+        Matcher reviewRegex = Pattern.compile('<a href="(.*?m=(\\w*)&a=Approvals.*&u=(.*)") style.*>').matcher(contentBody);
         Boolean reviewFound = reviewRegex.find();
         String reviewURL = '';
         String reviewModel = '';
@@ -77,6 +77,7 @@ global class parseEmail implements Messaging.InboundEmailHandler {
         if(emailType == 'Approval') {
             
             System.debug('|| Email is an Approval email. Parsing accordingly.');
+            System.debug('|| Creative Status ' + creativeStatus);
             
             //Find matching creative for the hard-coded Campaign record
             //Creative__c creative = [SELECT Id, Name, Campaign__c, Marketing_Cloud_Ref_ID__c, Approval_Status__c from Creative__c WHERE Campaign__c = '7013t000001dHWKAA2' AND Marketing_Cloud_Ref_ID__c = 'NTIzMDA0MDA2OjE5OjA']; 
