@@ -1,4 +1,5 @@
 .trip-container {
+    position: relative;
     width: 100%;
     border: 0px;
     padding: 0px;
@@ -60,6 +61,11 @@
     font-size: 16px;
 }
 
+.trip-start-time-red {
+    color: rgb(117, 32, 32);
+    font-weight: bold;
+}
+
 .trip-spacer {
     width: 100%;
     height: 10px;
@@ -87,8 +93,107 @@
 
 .trip-blob-connector {
     position: absolute;
-    top: 50%;
-    left: 20px;
-    height: 20px;
+    top: 36%;
+    left: 26px;
+    height: 40px;
     border-left: 2px dashed #666;
+}
+
+
+.trip-header {
+    display: flex;
+    justify-content: space-between;
+    margin: 0px;
+    padding: 0px;
+}
+
+.trip-header-left {
+    text-align: left;
+    margin-top: 10px;
+    margin-left: 10px;
+    min-width: 60%;
+    width: 60%;
+}
+
+.trip-header-left-text {
+    color: #ccc;
+    font-size: 16px;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+.trip-header-left-path {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-left: 10px;
+    padding-right: 10%;
+}
+
+.trip-header-left-path-blob, .trip-header-left-path-blob-alt {
+    width: 25%;
+    background-color: #666;
+    border-radius: 10px;
+    height: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+.trip-header-left-path-blob-alt {
+    background-color: #ccc;
+}
+
+.trip-header-right {
+    margin-top: 15px;
+    text-align: right;
+    display: inline-block;
+    border-radius: 30px 0px 0px 30px;
+    background-color: #666;
+    color: #fff;
+    font-size: 18px;
+    padding: 10px;
+    padding-left: 20px;
+    margin-right: 0px;
+}
+
+.trip-header-left-text {
+
+}
+
+.trip-header-right-text {
+    font-size: 20px;
+}
+
+.trip-footer-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px;
+    padding: 0px;
+    margin-top: 10px;
+}
+
+.trip-footer-left {
+    text-align: left;
+    margin-left: 10px;
+}
+
+.trip-footer-right {
+    text-align: right;
+}
+
+.trip-footer-text {
+    font-size: 25px;
+    color: #ccc;
+}
+
+.trip-footer-url {
+    font-size: 20px;
+    color: #ccc;
+    text-decoration: underline;
+    margin-right: 20px;
+}
+
+.trip-footer-url a {
+    color: #ccc;
 }
