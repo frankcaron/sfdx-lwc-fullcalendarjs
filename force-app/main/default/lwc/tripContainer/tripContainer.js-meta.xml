@@ -11,7 +11,7 @@
     </targets>
     <targetConfigs>
         <targetConfig targets="lightningCommunity__Default">
-            <property name="loginMode" label="Metric vs. Imperial" type="Boolean" description="Toggle to perform a login instead of a registration. Useful if you want to demo the flow but not register an entirely new user in the process." required="true" default="true" />
+            <property name="loginMode" label="Metric vs. Imperial" type="Boolean" description="Toggles display between Kilometers and Miles." required="true" default="true" />
         </targetConfig>
     </targetConfigs>
 </LightningComponentBundle>
